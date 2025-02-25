@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HYBRID | Creative Studio</title>
+  <style>
+    :root {
+      --primary: #6e44ff;
+      --secondary: #ff4499;
+      --accent1: #44ddff;
+      --accent2: #ffcc00;
+      --accent3: #00cc88;
+      --dark: #111122;
+      --light: #ffffff;
+      --gray: #f1f1f5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    header {
+      padding: 2rem 0;
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+      transition: background-color 0.3s ease;
+    }
+    
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .cta-button {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(110, 68, 255, 0.3);
+    }
+    
+    .hero {
+      padding-top: 10rem;
+      padding-bottom: 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -2px;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: rgba(17, 17, 34, 0.7);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero-shapes {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.8;
+    }
+    
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(50px);
+    }
+    
+    .shape-1 {
+      background-color: var(--primary);
+      width: 300px;
+      height: 300px;
+      top: 10%;
+      right: 10%;
+    }
+    
+    .shape-2 {
+      background-color: var(--accent1);
+      width: 200px;
+      height: 200px;
+      top: 40%;
+      right: 25%;
+    }
+    
+    .shape-3 {
+      background-color: var(--accent2);
+      width: 250px;
+      height: 250px;
+      top: 60%;
+      right: 5%;
+    }
+    
+    .services {
+      padding: 6rem 0;
+      background-color: var(--gray);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+    
+    .section-title p {
+      font-size: 1.1rem;
+      color: rgba(17, 17, 34, 0.7);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .service-card {
+      background-color: white;
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    .service-icon.video {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+    
+    .service-icon.web {
+      background: linear-gradient(to right, var(--accent1), var(--accent3));
+    }
+    
+    .service-icon.ux {
+      background: linear-gradient(to right, var(--accent2), var(--accent3));
+    }
+    
+    .service-icon.content {
+      background: linear-gradient(to right, var(--secondary), var(--accent2));
+    }
+    
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .service-card p {
+      color: rgba(17, 17, 34, 0.7);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    
+    .service-link {
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .service-link:hover {
+      text-decoration: underline;
+    }
+    
+    .projects {
+      padding: 6rem 0;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .project-card {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      height: 400px;
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: scale(1.03);
+    }
+    
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .project-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      color: white;
+      transform: translateY(80px);
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover .project-overlay {
+      transform: translateY(0);
+    }
+    
+    .project-overlay h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+    
+    .project-overlay p {
+      margin-bottom: 1rem;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover .project-overlay p {
+      opacity: 1;
+    }
+    
+    .process {
+      padding: 6rem 0;
+      background-color: var(--gray);
+    }
+    
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .process-step {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    
+    .step-number {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .step-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .step-content p {
+      color: rgba(17, 17, 34, 0.7);
+      line-height: 1.6;
+    }
+    
+    .testimonials {
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .testimonial-slider {
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      height: 350px;
+    }
+    
+    .testimonial {
+      background-color: white;
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+    
+    .testimonial.active {
+      opacity: 1;
+    }
+    
+    .testimonial-quote {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: rgba(17, 17, 34, 0.7);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: auto;
+    }
+    
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .author-info h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .author-info p {
+      color: rgba(17, 17, 34, 0.7);
+      font-size: 0.9rem;
+    }
+    
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(110, 68, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .dot.active {
+      background-color: var(--primary);
+      transform: scale(1.5);
+    }
+    
+    .contact {
+      padding: 6rem 0;
+      background-color: var(--dark);
+      color: white;
+    }
+    
+    .contact .section-title h2 {
+      color: white;
+    }
+    
+    .contact .section-title p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 4rem;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .contact-method {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .contact-text h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .contact-text p, .contact-text a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-text a:hover {
+      color: white;
+    }
+    
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .form-group label {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .form-group input, .form-group textarea {
+      padding: 1rem;
+      border-radius: 8px;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    footer {
+      background-color: black;
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    footer p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 3rem;
+      }
+      
+      .process-step {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .hero-shapes {
+        opacity: 0.3;
+      }
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .floating-delayed {
+      animation: float 7s ease-in-out 1s infinite;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+    
+    @media screen and (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <nav>
+        <div class="logo">HYBRID</div>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#process">Process</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact" class="cta-button">Let's Talk</a>
+        </div>
+        <button class="mobile-menu-btn">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Where <span class="gradient-text">creativity</span> meets <span class="gradient-text">functionality</span>.</h1>
+        <p>A hybrid agency and product studio crafting unforgettable digital experiences for startups and enterprises.</p>
+        <a href="#contact" class="cta-button">Start a Project</a>
+      </div>
+    </div>
+    <div class="hero-shapes">
+      <div class="shape shape-1 floating"></div>
+      <div class="shape shape-2 floating-delayed"></div>
+      <div class="shape shape-3 floating"></div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Full-Spectrum <span class="gradient-text">Creative Services</span></h2>
+        <p>From concept to execution, I deliver end-to-end solutions tailored to your unique needs.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon video">🎬</div>
+          <h3>Video Production</h3>
+          <p>Captivating video content that tells your story, builds your brand, and engages your audience.</p>
+          <a href="#" class="service-link">Learn more →</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon web">💻</div>
+          <h3>Web Development</h3>
+          <p>Stunning, high-performance websites and landing pages that convert visitors into customers.</p>
+          <a href="#" class="service-link">Learn more →</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon ux">✏️</div>
+          <h3>UX/UI Design</h3>
+          <p>User-centered design that creates seamless, intuitive experiences across all digital touchpoints.</p>
+          <a href="#" class="service-link">Learn more →</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon content">📝</div>
+          <h3>Content Creation</h3>
+          <p>Strategic content that resonates with your audience and drives meaningful engagement.</p>
+          <a href="#" class="service-link">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured <span class="gradient-text">Projects</span></h2>
+        <p>A showcase of creative solutions delivered to clients across various industries.</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="/api/placeholder/600/800" alt="Project thumbnail" class="project-image">
+          <div class="project-overlay">
+            <h3>Techtopia Rebrand</h3>
+            <p>Full brand refresh and website redesign for a leading tech startup.</p>
+            <a href="#" class="service-link" style="color: white;">View Case Study →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="/api/placeholder/600/800" alt="Project thumbnail" class="project-image">
+          <div class="project-overlay">
+            <h3>Bloom Marketing Campaign</h3>
+            <p>Comprehensive content strategy and video series that doubled engagement.</p>
+            <a href="#" class="service-link" style="color: white;">View Case Study →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="/api/placeholder/600/800" alt="Project thumbnail" class="project-image">
+          <div class="project-overlay">
+            <h3>Fintech Mobile App</h3>
+            <p>UX/UI design for an innovative financial technology platform.</p>
+            <a href="#" class="service-link" style="color: white;">View Case Study →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-title">
+        <h2>My <span class="gradient-text">Process</span></h2>
+        <p>A streamlined approach focused on delivering exceptional results.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Discovery</h3>
+            <p>I start by deeply understanding your brand, goals, and challenges. Through collaborative sessions, we define clear objectives and success metrics for your project.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Strategy</h3>
+            <p>Based on our discovery insights, I develop a comprehensive strategy that outlines the creative approach, timeline, and deliverables tailored to your specific needs.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Creation</h3>
+            <p>This is where concepts become reality. I work diligently to craft high-quality deliverables, keeping you involved throughout the process with regular updates and feedback sessions.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Refinement</h3>
+            <p>Once the initial work is complete, we review and refine the deliverables together, ensuring every detail meets our quality standards and aligns with your vision.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>Launch & Support</h3>
+            <p>After final approval, I handle the launch and provide ongoing support to ensure everything functions as intended, with options for future enhancements and maintenance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Client <span class="gradient-text">Testimonials</span></h2>
+        <p>What people are saying about working with me.</p>
+      </div>
+      <div class="testimonial-slider">
+        <div class="testimonial active">
+          <p class="testimonial-quote">"Working with this creative studio was a game-changer for our startup. The landing page they designed not only looked stunning but also significantly improved our conversion rates. Their ability to understand our vision and translate it into a functional, beautiful design was impressive."</p>
+          <div class="testimonial-author">
+            <img src="/api/placeholder/120/120" alt="Client avatar" class="author-avatar">
+            <div class="author-info">
+              <h4>Sarah Johnson</h4>
+              <p>CEO, TechStart</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-quote">"The video production quality was exceptional. We needed a product explainer that would engage our audience and clearly communicate our value proposition. The result exceeded our expectations and has become a central piece of our marketing strategy."</p>
+          <div class="testimonial-author">
+            <img src="/api/placeholder/120/120" alt="Client avatar" class="author-avatar">
+            <div class="author-info">
+              <h4>Michael Chen</h4>
+              <p>Marketing Director, InnovateCorp</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-quote">"From UX design to content creation, the comprehensive approach to our digital presence transformation was exactly what we needed. The studio delivered a cohesive experience across all touchpoints that has significantly strengthened our brand identity."</p>
+          <div class="testimonial-author">
+            <img src="/api/placeholder/120/120" alt="Client avatar" class="author-avatar">
+            <div class="author-info">
+              <h4>Elena Rodriguez</h4>
+              <p>Brand Manager, Global Enterprises</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Let's <span class="gradient-text">Create</span> Together</h2>
+        <p>Ready to bring your vision to life? Get in touch and let's start a conversation.</p>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-method">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-text">
+              <h3>Email</h3>
+              <a href="mailto:hello@hybridstudio.com">hello@hybridstudio.com</a>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-icon">📱</div>
+            <div class="contact-text">
+              <h3>Phone</h3>
+              <a href="tel:+12345678900">+1 (234) 567-8900</a>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-icon">📍</div>
+            <div class="contact-text">
+              <h3>Location</h3>
+              <p>San Francisco, CA</p>
+              <p>Available for remote collaboration worldwide</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email">
+          </div>
+          <div class="form-group">
+            <label for="project">Project Type</label>
+            <input type="text" id="project" name="project" placeholder="What are you working on?">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project"></textarea>
+          </div>
+          <button type="submit" class="cta-button">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 HYBRID Creative Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Testimonial slider
+    const testimonials = document.querySelectorAll('.testimonial');
+    const dots = document.querySelectorAll('.dot');
+    let currentTestimonial = 0;
+    
+    function showTestimonial(index) {
+      testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      testimonials[index].classList.add('active');
+      dots[index].classList.add('active');
+      
+      currentTestimonial = index;
+    }
+    
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showTestimonial(index);
+      });
+    });
+    
+    // Auto-rotate testimonials
+    setInterval(() => {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }, 5000);
+    
+    // Mobile menu
+    // Mobile menu
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+    
+    // Add mobile menu styles
+    const style = document.createElement('style');
+    style.textContent = `
+      @media screen and (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 70%;
+          height: 100vh;
+          background-color: white;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+          transition: all 0.5s ease;
+          box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+          z-index: 200;
+        }
+        
+        .nav-links.active {
+          right: 0;
+        }
+        
+        .nav-links a {
+          font-size: 1.2rem;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+          }
+        }
+      });
+    });
+    
+    // Animated elements on scroll
+    const animateOnScroll = () => {
+      const sections = document.querySelectorAll('section');
+      const triggerBottom = window.innerHeight * 0.8;
+      
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        
+        if (sectionTop < triggerBottom) {
+          section.classList.add('appear');
+        }
+      });
+    };
+    
+    // Add animation styles
+    const animationStyle = document.createElement('style');
+    animationStyle.textContent = `
+      section {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 1s ease;
+      }
+      
+      section.appear {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    `;
+    document.head.appendChild(animationStyle);
+    
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Initial check
+    
+    // Form validation and submission
+    const contactForm = document.querySelector('.contact-form');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const messageInput = document.getElementById('message');
+      
+      let isValid = true;
+      
+      if (!nameInput.value.trim()) {
+        highlightError(nameInput);
+        isValid = false;
+      } else {
+        removeError(nameInput);
+      }
+      
+      if (!emailInput.value.trim() || !isValidEmail(emailInput.value)) {
+        highlightError(emailInput);
+        isValid = false;
+      } else {
+        removeError(emailInput);
+      }
+      
+      if (!messageInput.value.trim()) {
+        highlightError(messageInput);
+        isValid = false;
+      } else {
+        removeError(messageInput);
+      }
+      
+      if (isValid) {
+        // In a real implementation, this would send data to your backend
+        const successMessage = document.createElement('div');
+        successMessage.classList.add('form-success');
+        successMessage.textContent = 'Message sent successfully! I\'ll be in touch soon.';
+        contactForm.innerHTML = '';
+        contactForm.appendChild(successMessage);
+      }
+    });
+    
+    function isValidEmail(email) {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+    
+    function highlightError(input) {
+      input.style.borderBottom = '2px solid red';
+      input.classList.add('error');
+    }
+    
+    function removeError(input) {
+      input.style.borderBottom = '';
+      input.classList.remove('error');
+    }
+    
+    // Add form validation styles
+    const formStyle = document.createElement('style');
+    formStyle.textContent = `
+      .form-group input.error,
+      .form-group textarea.error {
+        background-color: rgba(255, 0, 0, 0.1);
+      }
+      
+      .form-success {
+        background-color: var(--accent3);
+        color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 600;
+      }
+    `;
+    document.head.appendChild(formStyle);
+    
+    // Parallax effect for hero shapes
+    window.addEventListener('mousemove', (e) => {
+      const shapes = document.querySelectorAll('.shape');
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      
+      shapes.forEach((shape, index) => {
+        const speed = (index + 1) * 20;
+        const offsetX = (x - 0.5) * speed;
+        const offsetY = (y - 0.5) * speed;
+        
+        shape.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+      });
+    });
+    
+    // Project hover effect enhancement
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        projectCards.forEach(other => {
+          if (other !== card) {
+            other.style.opacity = '0.6';
+            other.style.transform = 'scale(0.95)';
+          }
+        });
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        projectCards.forEach(other => {
+          other.style.opacity = '1';
+          other.style.transform = 'scale(1)';
+        });
+      });
+    });
+    
+    // Add cursor effect
+    const cursorEffect = () => {
+      const cursor = document.createElement('div');
+      cursor.classList.add('cursor');
+      document.body.appendChild(cursor);
+      
+      const cursorInner = document.createElement('div');
+      cursorInner.classList.add('cursor-inner');
+      document.body.appendChild(cursorInner);
+      
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+        
+        cursorInner.style.left = `${e.clientX}px`;
+        cursorInner.style.top = `${e.clientY}px`;
+      });
+      
+      document.addEventListener('mousedown', () => {
+        cursor.classList.add('click');
+        cursorInner.classList.add('click');
+        
+        setTimeout(() => {
+          cursor.classList.remove('click');
+          cursorInner.classList.remove('click');
+        }, 500);
+      });
+      
+      const links = document.querySelectorAll('a, button');
+      links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+          cursor.classList.add('hover');
+          cursorInner.classList.add('hover');
+        });
+        
+        link.addEventListener('mouseleave', () => {
+          cursor.classList.remove('hover');
+          cursorInner.classList.remove('hover');
+        });
+      });
+    };
+    
+    // Add cursor styles
+    const cursorStyle = document.createElement('style');
+    cursorStyle.textContent = `
+      .cursor {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        border: 2px solid var(--primary);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        transition: all 0.3s ease;
+        transition-property: background, transform;
+        transform-origin: 100% 100%;
+        z-index: 9999;
+        opacity: 0.5;
+      }
+      
+      .cursor-inner {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background-color: var(--primary);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        transition: all 0.1s ease;
+        z-index: 9999;
+      }
+      
+      .cursor.hover {
+        transform: translate(-50%, -50%) scale(1.5);
+        background-color: rgba(110, 68, 255, 0.1);
+      }
+      
+      .cursor-inner.hover {
+        transform: translate(-50%, -50%) scale(0);
+      }
+      
+      .cursor.click {
+        transform: translate(-50%, -50%) scale(0.8);
+        background-color: rgba(110, 68, 255, 0.2);
+      }
+      
+      .cursor-inner.click {
+        transform: translate(-50%, -50%) scale(1.5);
+      }
+      
+      @media (max-width: 768px) {
+        .cursor, .cursor-inner {
+          display: none;
+        }
+      }
+    `;
+    document.head.appendChild(cursorStyle);
+    
+    // Only enable cursor effect on non-touch devices
+    if (!('ontouchstart' in window)) {
+      cursorEffect();
+    }
+    
+    // Add animation to services cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach((card, index) => {
+      card.style.transitionDelay = `${index * 0.1}s`;
+    });
+    
+    // Add a subtle grain texture overlay
+    const textureOverlay = document.createElement('div');
+    textureOverlay.classList.add('texture-overlay');
+    document.body.appendChild(textureOverlay);
+    
+    const textureStyle = document.createElement('style');
+    textureStyle.textContent = `
+      .texture-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9Ii4wNSIvPjwvc3ZnPg==');
+        pointer-events: none;
+        opacity: 0.3;
+        z-index: 9000;
+      }
+    `;
+    document.head.appendChild(textureStyle);
+  </script>
+</body>
+</html>
