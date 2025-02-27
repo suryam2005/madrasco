@@ -26,20 +26,6 @@
       position: relative;
     }
     
-    /* Noise/grain effect */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      opacity: 0.15;
-      pointer-events: none;
-      z-index: 1;
-    }
-    
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -57,11 +43,21 @@
       top: 0;
       left: 0;
       width: 100%;
-      padding: 2rem;
+      padding: 1.5rem 2rem;
+      background-color: rgba(12, 12, 12, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    
+    .header-container {
+      width: 100%;
+      max-width: 1200px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 10;
     }
     
     .logo {
@@ -78,6 +74,7 @@
       flex-direction: column;
       gap: 3rem;
       max-width: 800px;
+      margin-top: 5rem;
     }
     
     h1 {
@@ -227,7 +224,16 @@
       display: none;
     }
     
-    .success-message.active {
+    .error-message {
+      background-color: rgba(255, 99, 71, 0.1);
+      border: 1px solid rgba(255, 99, 71, 0.2);
+      padding: 1rem;
+      border-radius: 8px;
+      display: none;
+      margin-top: 1rem;
+    }
+    
+    .success-message.active, .error-message.active {
       display: block;
       animation: fadeIn 0.5s ease;
     }
@@ -333,7 +339,21 @@
       }
       
       header {
-        padding: 1.5rem;
+        padding: 1rem;
+      }
+      
+      .header-container {
+        justify-content: center;
+      }
+      
+      .main-content {
+        align-items: center;
+        text-align: center;
+        margin-top: 4rem;
+      }
+      
+      h1 {
+        text-align: center;
       }
       
       .form-group {
@@ -358,7 +378,9 @@
   </div>
   
   <header>
-    <div class="logo">MADRAS COMPANY</div>
+    <div class="header-container">
+      <div class="logo">MADRAS COMPANY</div>
+    </div>
   </header>
   
   <div class="container">
@@ -390,6 +412,9 @@
         <div class="success-message" id="success-message">
           Thank you! We'll be in touch soon.
         </div>
+        <div class="error-message" id="error-message">
+          There was an error saving your email. Please try again.
+        </div>
       </div>
       
       <p class="founder">— Surya, Founder</p>
@@ -401,20 +426,64 @@
       const signupBtn = document.getElementById('signup-btn');
       const emailInput = document.getElementById('email-input');
       const successMessage = document.getElementById('success-message');
+      const errorMessage = document.getElementById('error-message');
+      
+      // Google Sheets App Script URL
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxZ1tZgrl_OIujapOCi-IqZot3N78X43uVmmCms_ZY2DyQWK10ogkwJx2LVRDDSXZeO/exec';
       
       signupBtn.addEventListener('click', function() {
         if(validateEmail(emailInput.value)) {
-          // In a real implementation, you would send this to your backend
-          console.log('Email submitted:', emailInput.value);
+          // Disable button to prevent multiple submissions
+          signupBtn.disabled = true;
+          signupBtn.textContent = 'Sending...';
           
-          // Show success message
-          successMessage.classList.add('active');
-          emailInput.value = '';
+          // Get the current date and time
+          const now = new Date();
+          const timestamp = now.toISOString();
           
-          // Hide success message after 5 seconds
-          setTimeout(() => {
-            successMessage.classList.remove('active');
-          }, 5000);
+          // Prepare data for Google Sheets
+          const data = {
+            email: emailInput.value,
+            timestamp: timestamp
+          };
+          
+          // Send data to Google Sheets
+          fetch(scriptURL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+          })
+          .then(response => {
+            // Show success message
+            successMessage.classList.add('active');
+            emailInput.value = '';
+            
+            // Reset button
+            signupBtn.disabled = false;
+            signupBtn.textContent = "Let's create together";
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+              successMessage.classList.remove('active');
+            }, 5000);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            
+            // Show error message
+            errorMessage.classList.add('active');
+            
+            // Reset button
+            signupBtn.disabled = false;
+            signupBtn.textContent = "Let's create together";
+            
+            // Hide error message after 5 seconds
+            setTimeout(() => {
+              errorMessage.classList.remove('active');
+            }, 5000);
+          });
         } else {
           // Simple validation feedback
           emailInput.style.borderColor = 'red';
