@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madras Company</title>
+  <style>
+    :root {
+      --text-color: #f5f5f7;
+      --bg-color: #0c0c0c;
+      --accent-color: #ff3a50;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Noise/grain effect */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards;
+      animation-delay: 0.3s;
+    }
+    
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      max-width: 800px;
+    }
+    
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      max-width: 18ch;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 1s ease forwards;
+    }
+    
+    h1 .highlight {
+      color: var(--accent-color);
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1 .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      width: 0;
+      height: 4px;
+      background-color: var(--accent-color);
+      animation: lineGrow 1.5s ease forwards;
+      animation-delay: 1.5s;
+    }
+    
+    .services {
+      display: flex;
+      gap: 2rem;
+      justify-content: space-between;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 1s ease forwards;
+      animation-delay: 0.4s;
+    }
+    
+    .service {
+      flex: 1;
+      padding: 1.5rem;
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .service:hover {
+      transform: translateY(-5px);
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .service h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent-color);
+    }
+    
+    .service p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    .founder {
+      margin-top: 1rem;
+      font-size: 1rem;
+      opacity: 0.6;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 1s ease forwards;
+      animation-delay: 0.5s;
+    }
+    
+    .signup-form {
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 500px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 1s ease forwards;
+      animation-delay: 0.6s;
+    }
+    
+    .form-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .signup-input {
+      flex-grow: 1;
+      padding: 1rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 50px;
+      color: var(--text-color);
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    
+    .signup-input:focus {
+      border-color: var(--accent-color);
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+    
+    .signup-button {
+      padding: 1rem 2rem;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .signup-button::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: -100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    .signup-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(255, 58, 80, 0.2);
+    }
+    
+    .success-message {
+      background-color: rgba(46, 204, 113, 0.1);
+      border: 1px solid rgba(46, 204, 113, 0.2);
+      padding: 1rem;
+      border-radius: 8px;
+      display: none;
+    }
+    
+    .success-message.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .moving-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.3;
+    }
+    
+    .shape-1 {
+      width: 400px;
+      height: 400px;
+      background-color: var(--accent-color);
+      top: 30%;
+      right: -100px;
+      animation: floatAnimation 20s ease-in-out infinite;
+    }
+    
+    .shape-2 {
+      width: 300px;
+      height: 300px;
+      background-color: #3a86ff;
+      bottom: -100px;
+      left: 10%;
+      animation: floatAnimation 15s ease-in-out infinite reverse;
+    }
+    
+    .shape-3 {
+      width: 200px;
+      height: 200px;
+      background-color: #a86bff;
+      top: 15%;
+      left: 25%;
+      animation: floatAnimation 18s ease-in-out infinite 2s;
+    }
+    
+    @keyframes shimmer {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes lineGrow {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+    
+    @keyframes floatAnimation {
+      0% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(30px, 30px);
+      }
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+      
+      header {
+        padding: 1.5rem;
+      }
+      
+      .form-group {
+        flex-direction: column;
+      }
+      
+      .signup-button {
+        width: 100%;
+      }
+      
+      .services {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="moving-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  
+  <header>
+    <div class="logo">MADRAS COMPANY</div>
+  </header>
+  
+  <div class="container">
+    <div class="main-content">
+      <h1>Where <span class="highlight">design</span> meets <span class="highlight">marketing</span> meets <span class="highlight">innovation</span>.</h1>
+      
+      <div class="services">
+        <div class="service">
+          <h3>Design</h3>
+          <p>We craft pixel-perfect, strategic design that elevates brands and creates impact.</p>
+        </div>
+        
+        <div class="service">
+          <h3>Marketing</h3>
+          <p>We drive growth through data-driven marketing strategies that connect and convert.</p>
+        </div>
+        
+        <div class="service">
+          <h3>Product Studio</h3>
+          <p>We transform unique ideas into market-ready products with in-house development.</p>
+        </div>
+      </div>
+      
+      <div class="signup-form">
+        <div class="form-group">
+          <input type="email" class="signup-input" placeholder="Your email address" id="email-input">
+          <button class="signup-button" id="signup-btn">Let's create together</button>
+        </div>
+        <div class="success-message" id="success-message">
+          Thank you! We'll be in touch soon.
+        </div>
+      </div>
+      
+      <p class="founder">— Surya, Founder</p>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const signupBtn = document.getElementById('signup-btn');
+      const emailInput = document.getElementById('email-input');
+      const successMessage = document.getElementById('success-message');
+      
+      signupBtn.addEventListener('click', function() {
+        if(validateEmail(emailInput.value)) {
+          // In a real implementation, you would send this to your backend
+          console.log('Email submitted:', emailInput.value);
+          
+          // Show success message
+          successMessage.classList.add('active');
+          emailInput.value = '';
+          
+          // Hide success message after 5 seconds
+          setTimeout(() => {
+            successMessage.classList.remove('active');
+          }, 5000);
+        } else {
+          // Simple validation feedback
+          emailInput.style.borderColor = 'red';
+          setTimeout(() => {
+            emailInput.style.borderColor = '';
+          }, 2000);
+        }
+      });
+      
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+      }
+      
+      // Add animations when elements come into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.main-content > *').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
