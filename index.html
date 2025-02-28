@@ -447,14 +447,14 @@
             timestamp: timestamp
           };
           
-          // Send data to Google Sheets
           fetch(scriptURL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-          })
+  method: 'POST',
+  mode: 'no-cors', // Add this line
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data)
+})
           .then(response => {
             // Show success message
             successMessage.classList.add('active');
