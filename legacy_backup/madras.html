@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madras Company</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation Header */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            animation: slideDown 0.8s ease;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .logo {
+            font-family: 'Georgia', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #ff6b35;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #ff6b35;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1a2b4a;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 80px 30px 30px;
+                gap: 30px;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Homepage */
+        .homepage {
+            text-align: center;
+            padding: 180px 20px 100px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+
+        .homepage-logo {
+            font-family: 'Georgia', serif;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            animation: fadeIn 1s ease;
+        }
+
+        .homepage-logo span:first-child {
+            color: #ff6b35;
+            font-style: italic;
+        }
+
+        .homepage-logo span:last-child {
+            font-style: italic;
+        }
+
+        .homepage h1 {
+            font-family: 'Georgia', serif;
+            font-size: 5rem;
+            font-style: italic;
+            color: #1a2b4a;
+            margin-bottom: 20px;
+            animation: slideUp 1s ease 0.2s both;
+        }
+
+        .homepage-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            animation: slideUp 1s ease 0.4s both;
+        }
+
+        .decorative-images {
+            display: flex;
+            gap: 40px;
+            margin: 60px 0;
+            justify-content: center;
+        }
+
+        .decorative-card {
+            width: 220px;
+            height: 320px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .decorative-card:first-child {
+            transform: rotate(-8deg);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: float 3s ease-in-out infinite, rotateLeft 1s ease 0.6s both;
+        }
+
+        .decorative-card:last-child {
+            transform: rotate(8deg);
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            animation: float 3s ease-in-out infinite 0.5s, rotateRight 1s ease 0.8s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: #fff;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            animation: slideUp 1s ease 1s both, pulse 2s ease 3s infinite;
+        }
+
+        .cta-button:hover {
+            background: #ff5020;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Sneak Peak Section */
+        .sneak-peak {
+            background: #fff;
+            padding: 100px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 60px auto;
+        }
+
+        .service-card {
+            background: rgba(26, 43, 74, 0.05);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 16px;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 107, 53, 0.05);
+            border-color: rgba(255, 107, 53, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: #ff6b35;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Georgia', serif;
+            font-size: 3.5rem;
+            font-style: italic;
+            color: #1a2b4a;
+            margin-bottom: 60px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 30px;
+            animation: scroll 30s linear infinite;
+            width: fit-content;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .work-card {
+            background: #e8e8e8;
+            border-radius: 16px;
+            overflow: hidden;
+            min-width: 320px;
+            flex-shrink: 0;
+            transition: all 0.5s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .work-image {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .work-card:hover .work-image {
+            transform: scale(1.05);
+        }
+
+        .work-image.numbers {
+            background: #1a2b4a;
+            color: #4a9eff;
+            font-size: 4rem;
+        }
+
+        .work-image.photo {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .work-image.colorful {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: #fff;
+        }
+
+        .work-image.red {
+            background: #f5f5f5;
+            color: #ff4444;
+            font-size: 1.8rem;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .work-image.gradient1 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: #fff;
+        }
+
+        .work-image.gradient2 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: #fff;
+        }
+
+        .work-image.gradient3 {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            color: #fff;
+        }
+
+        .work-image.gradient4 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+        }
+
+        /* Design in Action */
+        .design-action {
+            padding: 100px 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 80px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: #f0f0f0;
+            border-radius: 20px;
+            padding: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            transition: all 0.5s ease;
+            flex-shrink: 0;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.08);
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.1);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .project-card:hover .project-image::before {
+            opacity: 1;
+        }
+
+        .project-image.flow {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .project-image.media {
+            background: #2a2a2a;
+        }
+
+        .project-image.navigo {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .project-image.property {
+            background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+        }
+
+        .project-image.apparel {
+            background: linear-gradient(135deg, #000000 0%, #434343 100%);
+        }
+
+        .project-content {
+            padding: 40px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card h3 {
+            font-size: 2rem;
+            color: #1a2b4a;
+            margin-bottom: 20px;
+        }
+
+        .project-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #2a3b5a;
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        /* What We Bring */
+        .skills-section {
+            background: #fff;
+            padding: 100px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .skills-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 0;
+        }
+
+        .skills-cloud {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .skill-bubble {
+            background: #e3f2ff;
+            color: #1a2b4a;
+            padding: 18px 35px;
+            border-radius: 35px;
+            font-size: 1rem;
+            font-style: italic;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            animation: floatSkill 3s ease-in-out infinite;
+        }
+
+        .skill-bubble:nth-child(1) { animation-delay: 0s; }
+        .skill-bubble:nth-child(2) { animation-delay: 0.3s; }
+        .skill-bubble:nth-child(3) { animation-delay: 0.6s; }
+        .skill-bubble:nth-child(4) { animation-delay: 0.9s; }
+        .skill-bubble:nth-child(5) { animation-delay: 1.2s; }
+        .skill-bubble:nth-child(6) { animation-delay: 1.5s; }
+        .skill-bubble:nth-child(7) { animation-delay: 1.8s; }
+        .skill-bubble:nth-child(8) { animation-delay: 2.1s; }
+        .skill-bubble:nth-child(9) { animation-delay: 2.4s; }
+
+        .skill-bubble:hover {
+            background: #1a2b4a;
+            color: #fff;
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        /* About Section */
+        .about-section {
+            background: #2a3b5a;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .about-section .section-title {
+            color: #fff;
+        }
+
+        .about-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .about-icon {
+            font-size: 4rem;
+            margin-bottom: 40px;
+            animation: bounce 2s ease infinite;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.9;
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .about-content p {
+            margin-bottom: 25px;
+        }
+
+        /* Testimonial */
+        .testimonial-section {
+            padding: 100px 20px;
+            background: #fff;
+        }
+
+        .testimonial {
+            background: #f0f0f0;
+            padding: 60px;
+            border-radius: 20px;
+            max-width: 900px;
+            margin: 60px auto;
+            animation: fadeInUp 1s ease;
+        }
+
+        .testimonial p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .testimonial .highlight {
+            color: #ff6b35;
+            font-weight: 600;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .author-info {
+            text-align: left;
+        }
+
+        .author-info h4 {
+            color: #1a2b4a;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #666;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .clients-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 80px auto;
+            overflow: hidden;
+        }
+
+        .clients-logo {
+            display: flex;
+            gap: 60px;
+            animation: clientsScroll 20s linear infinite;
+            width: fit-content;
+        }
+
+        .clients-logo span {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #999;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #fff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .cta-icon {
+            font-size: 4rem;
+            margin-bottom: 40px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 20px 100px;
+            background: #f5f5f5;
+        }
+
+        .contact-info {
+            max-width: 550px;
+            margin: 40px auto;
+        }
+
+        .contact-item {
+            background: #e8e8e8;
+            padding: 18px 35px;
+            margin: 12px 0;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #ddd;
+            transform: translateX(5px);
+        }
+
+        .contact-item label {
+            color: #666;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .contact-item a {
+            color: #1a2b4a;
+            font-weight: 600;
+            text-decoration: none;
+            word-break: break-word;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .contact-item a:hover {
+            color: #ff6b35;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-8deg); }
+            50% { transform: translateY(-20px) rotate(-8deg); }
+        }
+
+        @keyframes floatSkill {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes rotateLeft {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-8deg); }
+        }
+
+        @keyframes rotateRight {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(8deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-320px * 4 - 120px)); }
+        }
+
+        @keyframes skillsScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-100%)); }
+        }
+
+        @keyframes clientsScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-100%)); }
+        }
+
+        /* Scroll reveal animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .projects {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .homepage h1 {
+                font-size: 4rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .projects {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            nav {
+                padding: 20px 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .homepage {
+                padding: 140px 20px 80px;
+            }
+
+            .homepage h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .work-card {
+                min-width: 280px;
+            }
+
+            .decorative-images {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .project-card {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .testimonial {
+                padding: 40px 30px;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 16px 28px;
+            }
+
+            .skill-bubble {
+                font-size: 0.95rem;
+                padding: 15px 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .homepage h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-button {
+                padding: 15px 35px;
+                font-size: 0.95rem;
+            }
+
+            .work-card {
+                min-width: 250px;
+            }
+
+            .decorative-card {
+                width: 180px;
+                height: 260px;
+            }
+
+            .project-card h3 {
+                font-size: 1.6rem;
+            }
+
+            .project-content {
+                padding: 30px;
+            }
+
+            .testimonial p {
+                font-size: 1.1rem;
+            }
+
+            .clients-logo span {
+                font-size: 1rem;
+                gap: 40px;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .projects {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="logo">Madras Company</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#ventures" onclick="closeMenu()">Ventures</a></li>
+            <li><a href="#about" onclick="closeMenu()">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Homepage -->
+    <section class="homepage" id="home">
+        <div class="homepage-logo">
+            <span>Madras</span> <span>& Company</span>
+        </div>
+        
+        <h1>Where <span style="color: #ff6b35;">design</span> meets<br><span style="color: #ff6b35;">marketing</span> meets<br><span style="color: #ff6b35;">innovation</span>.</h1>
+        
+        <div class="decorative-images">
+            <div class="decorative-card"></div>
+            <div class="decorative-card"></div>
+        </div>
+        
+        <a href="#ventures" class="cta-button">Get Started →</a>
+    </section>
+
+    <!-- Sneak Peak Section -->
+    <section class="sneak-peak" id="ventures">
+        <h2 class="section-title">What we do</h2>
+        
+        <!-- Service Cards -->
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Design</h3>
+                <p>We craft pixel-perfect, strategic design that elevates brands and creates impact.</p>
+            </div>
+            <div class="service-card">
+                <h3>Marketing</h3>
+                <p>We drive growth through data-driven marketing strategies that connect and convert.</p>
+            </div>
+            <div class="service-card">
+                <h3>Product Studio</h3>
+                <p>We transform unique ideas into market-ready products with in-house development.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 100px;">Sneak peak of our ventures</h2>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="work-card">
+                    <div class="work-image numbers">MCo</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image photo">🎬</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image colorful">💳</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image red">VENTURE<br>STUDIO</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image gradient1">🚴</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image gradient2">🏢</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image gradient3">👕</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image gradient4">🎨</div>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="work-card">
+                    <div class="work-image numbers">MCo</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image photo">🎬</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image colorful">💳</div>
+                </div>
+                <div class="work-card">
+                    <div class="work-image red">VENTURE<br>STUDIO</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design in Action -->
+    <section class="design-action">
+        <h2 class="section-title">Ventures in action</h2>
+        <p class="section-subtitle">Experimenting at the intersection of media, technology, and culture. Building bold brands and scalable products</p>
+        
+        <div class="projects">
+            <div class="project-card">
+                <div class="project-image flow">📱</div>
+                <div class="project-content">
+                    <h3>FlowPOS</h3>
+                    <p>FlowPOS needed a mobile-first point of sale platform for modern retail. Existing systems were clunky, so we designed an intuitive POS to provide real-time transaction insights for growth and scalability.</p>
+                    <div class="tags">
+                        <span class="tag">SaaS</span>
+                        <span class="tag">UX</span>
+                        <span class="tag">UI</span>
+                        <span class="tag">Fintech</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image media">🎥</div>
+                <div class="project-content">
+                    <h3>Madras Media</h3>
+                    <p>Madras Media wanted a content creation agency for bold brands. We designed a creative platform for producing compelling stories and marketing content to establish powerful brand presence quickly.</p>
+                    <div class="tags">
+                        <span class="tag">Content</span>
+                        <span class="tag">UX</span>
+                        <span class="tag">Branding</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image navigo">🚴‍♂️</div>
+                <div class="project-content">
+                    <h3>Navigo</h3>
+                    <p>Navigo is a simple IoT device for bikes that provides GPS navigation, music playback, and hands-free calling. With WiFi and Bluetooth connectivity, it transforms any bike into a smart cycling experience.</p>
+                    <div class="tags">
+                        <span class="tag">IoT</span>
+                        <span class="tag">Hardware</span>
+                        <span class="tag">UI</span>
+                        <span class="tag">UX</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image property">🏢</div>
+                <div class="project-content">
+                    <h3>Property Manager</h3>
+                    <p>A comprehensive platform that manages existing owned properties and assets with third parties. Streamlining property operations, tenant management, and asset tracking for maximum efficiency.</p>
+                    <div class="tags">
+                        <span class="tag">SaaS</span>
+                        <span class="tag">PropTech</span>
+                        <span class="tag">UI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image apparel">👕</div>
+                <div class="project-content">
+                    <h3>Madras Apparel</h3>
+                    <p>Madras Apparel is a clothing brand that sells the best quality garments. Combining traditional craftsmanship with modern design, delivering premium apparel that stands the test of time.</p>
+                    <div class="tags">
+                        <span class="tag">E-commerce</span>
+                        <span class="tag">Branding</span>
+                        <span class="tag">Fashion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Bring -->
+    <section class="skills-section">
+        <h2 class="section-title">What we bring to the table</h2>
+        <p class="section-subtitle">Building ventures that engage founders and help your startup stand out from day one</p>
+        
+        <div class="skills-wrapper">
+            <div class="skills-cloud">
+                <span class="skill-bubble">Product Design</span>
+                <span class="skill-bubble">User Experience Design</span>
+                <span class="skill-bubble">Design Systems</span>
+                <span class="skill-bubble">User Research</span>
+                <span class="skill-bubble">User Interface Design</span>
+                <span class="skill-bubble">Branding</span>
+                <span class="skill-bubble">Pitch Deck Design</span>
+                <span class="skill-bubble">Visual Design</span>
+                <span class="skill-bubble">Framer Development</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-icon">🛸</div>
+        <h2 class="section-title">Behind the canvas</h2>
+        <p class="section-subtitle">Finally, meet the studio passionate about helping startups succeed. A quick peek into our world</p>
+        
+        <div class="about-content">
+            <p>We experiment fearlessly and incubate ideas into real ventures. Whether you need a bold brand identity that stands out or a scalable product that actually works, we focus on results over endless iterations.</p>
+            <p>When we're not building, you'll find us exploring new tech or perfecting our craft. We believe great ventures should solve real problems fast. No venture ego, just things that work.</p>
+            <p>Born in Chennai, built for the world.</p>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial-section">
+        <h2 class="section-title">Kind words from Clients</h2>
+        
+        <div class="testimonial">
+            <p>Madras Company completely transformed how we present ourselves to investors. The design work didn't just look great it <span class="highlight">helped us close our Series A.</span></p>
+            <div class="testimonial-author">
+                <div class="author-avatar"></div>
+                <div class="author-info">
+                    <h4>Sarah Chen</h4>
+                    <p>Founder, FlowPOS</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="clients-wrapper">
+            <div class="clients-logo">
+                <span>FlowPOS</span>
+                <span>Navigo</span>
+                <span>PropertyManager</span>
+                <span>MadrasMedia</span>
+                <span>MadrasApparel</span>
+                <!-- Duplicate for seamless loop -->
+                <span>FlowPOS</span>
+                <span>Navigo</span>
+                <span>PropertyManager</span>
+                <span>MadrasMedia</span>
+                <span>MadrasApparel</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-icon">📚</div>
+        <h2 class="section-title">Ready to build something<br>amazing?</h2>
+        <p class="section-subtitle">We'd love to connect with you!</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title" style="color: #1a2b4a; margin-bottom: 20px;">Let's create together</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 40px; font-size: 1.1rem;">We'd love to connect with you!</p>
+        
+        <!-- Email Subscription -->
+        <div style="max-width: 600px; margin: 0 auto 60px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+            <input type="email" placeholder="Your email address" style="flex: 1; min-width: 250px; padding: 18px 30px; border-radius: 50px; border: 2px solid #e8e8e8; font-size: 1rem; outline: none; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='#ff6b35'" onblur="this.style.borderColor='#e8e8e8'">
+            <button style="background: #ff6b35; color: #fff; padding: 18px 40px; border-radius: 50px; border: none; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='#ff5020'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#ff6b35'; this.style.transform='translateY(0)'">Let's create together</button>
+        </div>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <label>Email</label>
+                <a href="mailto:hello@madrascompany.com">hello@madrascompany.com</a>
+            </div>
+            <div class="contact-item">
+                <label>LinkedIn</label>
+                <a href="https://linkedin.com/company/madrascompany" target="_blank" rel="noopener noreferrer">linkedin.com/madrascompany</a>
+            </div>
+            <div class="contact-item">
+                <label>Website</label>
+                <a href="https://madrascompany.co" target="_blank" rel="noopener noreferrer">madrascompany.co</a>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: #666; margin-top: 60px; font-size: 0.95rem;">Surya, Founder</p>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #1a2b4a; color: #fff; text-align: center; padding: 40px 20px;">
+        <p style="margin-bottom: 10px; font-size: 0.95rem;">© 2025 Madras Company. All rights reserved.</p>
+        <p style="color: #999; font-size: 0.85rem;">Born in Chennai, built for the world</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('nav');
+            
+            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.design-action, .skills-section, .testimonial-section, .cta-section');
+            sections.forEach(section => {
+                section.classList.add('scroll-reveal');
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
