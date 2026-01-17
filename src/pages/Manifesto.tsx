@@ -61,9 +61,9 @@ const Manifesto = () => {
 
                     <div className="mt-16 p-8 bg-white/5 border border-white/10 rounded-3xl text-center">
                         <h3 className="text-2xl font-bold mb-4">Ready to join the new era?</h3>
-                        <button className="px-8 py-4 rounded-full bg-gradient-to-b from-purple-500 to-purple-900 text-white font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.3)] border border-white/10">
+                        <a href="https://cal.com/surya-muralirajan-grla6g/15min" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-4 rounded-full bg-gradient-to-b from-purple-500 to-purple-900 text-white font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.3)] border border-white/10">
                             Book Creative Call
-                        </button>
+                        </a>
                     </div>
                 </div>
             </section>

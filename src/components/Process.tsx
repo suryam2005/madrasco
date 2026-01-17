@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { Phone, Clapperboard, Rocket } from 'lucide-react';
+import { UploadCloud, Clapperboard, Rocket } from 'lucide-react';
 
 const steps = [
     {
         number: "01",
         title: "The Download",
         description: "We ingest your brand assets, visual identity, and previous winners. We analyze what's working to build your unique creative profile.",
-        icon: Phone,
+        icon: UploadCloud,
         action: "Briefing"
     },
     {

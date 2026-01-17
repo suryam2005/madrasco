@@ -4,18 +4,15 @@ import Footer from '../components/Footer';
 import { ArrowRight, Play, X } from 'lucide-react';
 import { useState } from 'react';
 
-const categories = ['All Industries', 'E-commerce', 'SaaS', 'Beauty', 'Food & Beverage', 'Tech', 'Health & Wellness'];
+import { adsData, categories } from '../data/ads';
 
-const libraryAds = [
-    { title: "Yoga Bar Energy", category: "Food & Beverage", type: "Image Ad", views: "1.2M", src: "/mediahouse_ad.jpg" },
-    { title: "Tech Gadget V2", category: "Tech", type: "Video Ad", views: "850K", src: "/after.png" },
-    { title: "Generic To Premium", category: "SaaS", type: "Before/After", views: "2.1M", src: "/after.png" },
-    { title: "SkinCare Glow", category: "Beauty", type: "UGC Style", views: "3.4M", src: "/mediahouse_ad.jpg" },
-    { title: "Fitness App", category: "Health & Wellness", type: "Motion Graphic", views: "900K", src: "/mediahouse_ad.jpg" },
-    { title: "Subscription Box", category: "E-commerce", type: "Unboxing", views: "1.5M", src: "/after.png" },
-    { title: "Luxury Watch", category: "E-commerce", type: "Product Showcase", views: "2.8M", src: "/mediahouse_ad.jpg" },
-    { title: "AI Assistant", category: "SaaS", type: "Explainer", views: "1.1M", src: "/after.png" },
-];
+const libraryAds = adsData;
+
+
+const isVideo = (src: string) => {
+    const videoExtensions = ['.mp4', '.mov', '.webm'];
+    return videoExtensions.some(ext => src.toLowerCase().endsWith(ext));
+};
 
 const AdLibrary = () => {
     const [activeCategory, setActiveCategory] = useState('All Industries');
@@ -38,7 +35,7 @@ const AdLibrary = () => {
                         transition={{ duration: 0.6, ease: "easeInOut" }}
                         className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-purple-400 text-xs font-medium uppercase tracking-wider mb-6"
                     >
-                        Winning Creative Library
+                        Our Portfolio
                     </motion.div>
                     <motion.h1
                         initial={{ opacity: 0 }}
@@ -46,7 +43,7 @@ const AdLibrary = () => {
                         transition={{ duration: 0.6, delay: 0.1, ease: "easeInOut" }}
                         className="text-5xl md:text-6xl font-bold mb-6 tracking-tight"
                     >
-                        Ad <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500">Library</span>
+                        Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500">Work</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -85,12 +82,28 @@ const AdLibrary = () => {
                                 transition={{ duration: 0.4, ease: "easeInOut" }}
                                 className="group relative rounded-[32px] overflow-hidden bg-[#0A0A0A] border border-white/5 hover:border-white/20 transition-all shadow-2xl"
                             >
-                                <div className="aspect-[4/5] relative overflow-hidden">
-                                    <img
-                                        src={ad.src}
-                                        alt={ad.title}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                                    />
+                                <div className="aspect-[4/5] relative overflow-hidden bg-gray-900">
+                                    {isVideo(ad.src) ? (
+                                        <video
+                                            src={ad.src}
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                                            muted
+                                            loop
+                                            playsInline
+                                            autoPlay={false}
+                                            onMouseEnter={(e) => e.currentTarget.play()}
+                                            onMouseLeave={(e) => {
+                                                e.currentTarget.pause();
+                                                e.currentTarget.currentTime = 0;
+                                            }}
+                                        />
+                                    ) : (
+                                        <img
+                                            src={ad.src}
+                                            alt={ad.title}
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                                        />
+                                    )}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 
                                     <div className="absolute inset-0 flex items-center justify-center">
@@ -152,9 +165,9 @@ const AdLibrary = () => {
                         <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto relative z-10">
                             We've produced over 1,000+ top-performing ads for the world's fastest growing brands.
                         </p>
-                        <button className="relative z-10 px-10 py-5 rounded-full bg-white text-black font-extrabold text-lg transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(255,255,255,0.2)]">
-                            Book Your Creative Audit
-                        </button>
+                        <a href="#offer" className="relative z-10 px-10 py-5 rounded-full bg-white text-black font-extrabold text-lg transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(255,255,255,0.2)]">
+                            Get Access ($550/mo)
+                        </a>
                     </div>
                 </div>
 
@@ -187,12 +200,21 @@ const AdLibrary = () => {
                             </button>
 
                             <div className="grid grid-cols-1 lg:grid-cols-2">
-                                <div className="aspect-[4/5] bg-black">
-                                    <img
-                                        src={selectedAd.src}
-                                        alt={selectedAd.title}
-                                        className="w-full h-full object-cover"
-                                    />
+                                <div className="aspect-[4/5] bg-black flex items-center justify-center overflow-hidden">
+                                    {isVideo(selectedAd.src) ? (
+                                        <video
+                                            src={selectedAd.src}
+                                            className="w-full h-full object-contain"
+                                            controls
+                                            autoPlay
+                                        />
+                                    ) : (
+                                        <img
+                                            src={selectedAd.src}
+                                            alt={selectedAd.title}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    )}
                                 </div>
                                 <div className="p-12 flex flex-col justify-center">
                                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/20 bg-indigo-500/10 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-6">
@@ -214,9 +236,9 @@ const AdLibrary = () => {
                                         </div>
                                     </div>
 
-                                    <button className="w-full py-5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold transition-all shadow-lg shadow-indigo-500/20">
+                                    <a href="https://cal.com/surya-muralirajan-grla6g/15min" target="_blank" rel="noopener noreferrer" className="w-full py-5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold transition-all shadow-lg shadow-indigo-500/20 text-center block">
                                         Adopt This Strategy
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </motion.div>

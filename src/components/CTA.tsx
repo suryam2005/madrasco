@@ -52,16 +52,16 @@ const CTA = () => {
                             transition={{ delay: 0.3 }}
                             className="flex flex-col sm:flex-row items-center gap-4"
                         >
-                            <button className="group relative px-8 py-4 rounded-full bg-gradient-to-b from-purple-500 to-purple-900 text-white font-bold text-lg shadow-[0_0_40px_rgba(168,85,247,0.4)] transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(168,85,247,0.6)]">
+                            <a href="#offer" className="group relative px-8 py-4 rounded-full bg-gradient-to-b from-purple-500 to-purple-900 text-white font-bold text-lg shadow-[0_0_40px_rgba(168,85,247,0.4)] transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(168,85,247,0.6)] flex items-center gap-2">
                                 <span className="flex items-center gap-2">
-                                    Book Your Creative Call
+                                    Get Started ($550/mo)
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </span>
-                            </button>
+                            </a>
                         </motion.div>
                         <p className="mt-6 text-sm text-gray-500 flex items-center gap-2">
                             <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                            No pressure. No pitch. Just value.
+                            Join the top 1% of D2C brands.
                         </p>
                     </div>
                 </div>

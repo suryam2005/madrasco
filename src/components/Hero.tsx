@@ -7,15 +7,19 @@ const Hero = () => {
             {/* Background Glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
 
-            {/* Trust Badge */}
+            {/* Scarcity Banner */}
             <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="relative inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-medium mb-6 hover:bg-white/10 transition-colors"
+                className="mb-8 flex flex-col items-center gap-2"
             >
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
-                <span className="text-gray-300">Trusted by 50+ D2C Brands</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs font-bold uppercase tracking-wider">
+                    Beta Pricing - Jan Only
+                </div>
+                <div className="flex items-center gap-2 text-sm text-red-400 font-medium">
+                    <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                    Only 2 spots left (Onboarding 5 total)
+                </div>
             </motion.div>
 
             {/* Creating text hierarchy */}
@@ -46,13 +50,13 @@ const Hero = () => {
                 className="relative z-10 flex flex-col items-center justify-center gap-5"
             >
                 <div className='flex flex-wrap justify-center gap-4'>
-                    <button className="px-6 py-3 rounded-full bg-gradient-to-b from-purple-500 to-purple-900 text-white font-bold text-base transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] border border-white/10 ring-1 ring-white/20">
-                        Book Creative Call
-                    </button>
+                    <a href="#offer" className="px-8 py-4 rounded-full bg-gradient-to-b from-purple-500 to-purple-900 text-white font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] border border-white/10 ring-1 ring-white/20">
+                        Start Subscription
+                    </a>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                     <p className="text-xs text-gray-500">
-                        *Month-to-month flexibility. Pause or cancel anytime.
+                        *Async Onboarding. Start in 5 minutes.
                     </p>
                     <div className="flex items-center gap-2 text-[10px] text-gray-600 border border-white/5 bg-white/[0.02] px-3 py-1 rounded-full">
                         <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
