@@ -22,6 +22,15 @@ const Hero = () => {
                 </div>
             </motion.div>
 
+            <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-4"
+            >
+                <span className="text-sm md:text-base font-medium text-purple-400 tracking-wide uppercase">The Gold Standard for AI-Native Creative since 2024.</span>
+            </motion.div>
+
             {/* Creating text hierarchy */}
             <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -29,8 +38,8 @@ const Hero = () => {
                 transition={{ delay: 0.3 }}
                 className="relative z-10 max-w-4xl mx-auto text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6 drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]"
             >
-                The Unlimited Creative Engine <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500 drop-shadow-none">For D2C Brands.</span>
+                The High-Performance Creative Engine <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500 drop-shadow-none">for 8-Figure D2C Brands.</span>
             </motion.h1>
 
             <motion.p
@@ -39,8 +48,19 @@ const Hero = () => {
                 transition={{ delay: 0.4 }}
                 className="relative z-10 max-w-xl mx-auto text-base md:text-lg text-gray-400 mb-8"
             >
-                We deliver studio-quality AI UGC, static ads, and video creatives on autopilot. Flat monthly rate. Pause anytime. No product shipping required.
+                Studio-quality AI static ads and video creatives on autopilot. No meetings. No phone calls. Delivered in 48 hours.
             </motion.p>
+
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45 }}
+                className="relative z-10 max-w-2xl mx-auto mb-8 p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm"
+            >
+                <p className="text-sm text-gray-300">
+                    <span className="text-purple-400 font-bold">The Async Advantage:</span> We have a strict No-Meeting Policy. No Zoom calls, no scheduling, no wasted time. We communicate entirely through your dashboard so we can focus 100% of our time on your ads.
+                </p>
+            </motion.div>
 
             {/* Buttons */}
             <motion.div

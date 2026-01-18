@@ -5,20 +5,24 @@ import Services from './Services';
 
 const Solution = () => {
     return (
-        <section className="bg-black relative">
-            <div className="py-24 px-6 md:px-12 max-w-7xl mx-auto text-center">
+        <section className="bg-black relative pt-12">
+            <div className="relative py-24 px-6 md:px-12 max-w-7xl mx-auto text-center">
+                {/* Glow Effect */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[120px] pointer-events-none" />
+
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    className="relative z-10"
                 >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-medium uppercase tracking-wider mb-6">
+                    <span className="text-blue-500 font-bold tracking-widest uppercase mb-4 block text-lg">
                         The Solution
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                        Creative Velocity at Scale
+                    </span>
+                    <h2 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-white">
+                        Creative Velocity <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">At Scale</span>
                     </h2>
-                    <p className="text-gray-400 text-lg max-w-3xl mx-auto mb-16">
+                    <p className="text-gray-300 text-xl md:text-2xl max-w-3xl mx-auto mb-16 leading-relaxed">
                         We don't just clear your backlog. We give you a strategic advantage by flooding your ad account with high-performing creatives.
                     </p>
                 </motion.div>

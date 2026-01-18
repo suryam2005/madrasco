@@ -1,0 +1,202 @@
+# WEBSITE COPY - MEDIA HOUSE
+
+## HERO SECTION
+Headline: The Unlimited Creative Engine For D2C Brands.
+Subheadline: We deliver studio-quality AI UGC, static ads, and video creatives on autopilot. Flat monthly rate. Pause anytime. No product shipping required.
+Tagline: Beta Pricing - Jan Only
+Urgency: Only 2 spots left (Onboarding 5 total)
+Primary CTA: Start Subscription
+Subtext: *Async Onboarding. Start in 5 minutes.
+Capacity Update: Capacity Updated: [Current Date]
+
+Trust Indicators:
+- Dedicated Creative Team
+- Monthly Creative Refresh
+- < 24h Turnaround
+
+## PARTNERS SECTION
+Headline: Trusted by 50+ Fastest Growing Brands
+Companies: BrandOne, EcoFlow, TechGear, LuxeSkin, UrbanWear, FitLife, PureGlow, SwiftLogistics
+
+## PROBLEM SECTION
+Headline: The Old Way is Broken.
+Subtext: Scaling ads in 2025 requires velocity and variety. Traditional creative workflows can't keep up.
+1. Slow Turnaround: Traditional agencies take weeks to deliver one creative concept. By then, the trend is dead.
+2. High Retainers: Paying $5k+ monthly retainers for 'strategy' calls with zero tangible output?
+3. Ad Fatigue: Your winners die out in days. You need volume to combat fatigue, but you can't afford it.
+4. Inconsistent Quality: Freelancers are hit or miss. One good video, three bad ones. No reliability.
+
+## SOLUTION SECTION
+Label: The Solution
+Headline: Creative Velocity at Scale
+Subtext: We don't just clear your backlog. We give you a strategic advantage by flooding your ad account with high-performing creatives.
+
+## SERVICES SECTION
+Label: Our Capabilities
+Headline: Built for Performance.
+
+Service 1: AI Avatar UGC
+Subtitle: No Shipping Needed
+Description: We use hyper-realistic AI avatars to create UGC-style testimonials and hooks without shipping product.
+Full Description: Stop waiting weeks for creators to film. Our AI Avatar technology generates studio-quality UGC in minutes.
+- Speed: 24h turnaround vs 2-3 weeks with creators.
+- Consistency: Perfect lighting, audio, and delivery every time.
+- Scale: Create 100 variations of scripts instantly.
+- No Product Shipping: We generate the 'talking head' and overlay your product footage.
+
+Service 2: Rapid Ad Variations
+Subtitle: Visual Variety
+Description: Turn 1 winning concept into 10 unique visual angles. Dominate every placement.
+Full Description: Ad fatigue kills CPA. The solution is variety. We take your best hooks and concepts and remix them into entirely new visual formats.
+- Visual Hooks: 3D, text-heavy, stock mixes, avatar intros.
+- Pacing: Fast-paced cuts for TikTok, slower for Feed.
+- Audio: Different trending sounds and voiceovers.
+
+Service 3: Fatigue Protection
+Subtitle: Always Fresh
+Description: Engagement dropping? We deploy fresh creatives before relevance fades.
+Full Description: We monitor your ad performance trends and prep new creative batches *before* your winners die. Stay ahead of the algorithm.
+
+Service 4: Global Adaptation
+Subtitle: Multi-Language
+Description: Translate visual hooks and text overlays into 20+ languages instantly.
+Full Description: Scale your winners globally. We translate text overlays, captions, and even dub voiceovers to help you enter new markets efficiently.
+
+Service 5: Infinite Supply
+Subtitle: Content Factory
+Description: Scale your creative volume instantly. Never run out of ads again.
+Full Description: Our subscription model is built for volume. Whether you need 5 ads or 50, our pipeline scales to meet your ad spend demands.
+
+Service 6: Platform Native
+Subtitle: Format Optimization
+Description: Perfectly resized assets for Reels, TikTok, Shorts, and Feed.
+Full Description: Don't run a square video on Reels. We optimize every asset for its specific placement to maximize screen real estate and engagement.
+
+## BEFORE / AFTER SECTION
+Headline: Stop using boring ads.
+Subtext: See the difference AI-driven creativity makes.
+
+Traditional Ads (The Old Way):
+- Low engagement, expensive
+- Slow turnaround time (weeks)
+- Expensive production costs
+- Generic stock footage
+
+Media House Creative (The New Way):
+- High CTR, Vibrant, Brand-Aligned
+- 3D Elements & Dynamic Shadows
+- Key Benefits highlighted clearly
+- Scroll-stopping color psychology
+
+## HOOKS VARIATIONS SECTION
+Label: Maximum Testing
+Headline: One Core Idea. Infinite Hooks & Variations.
+Subtext: We don't bet on one horse. We run multiple hooks, visual styles, and angles to find the winner fast.
+
+1. Visual Stacks: Testing different aesthetic styles (3D, Cinematic, Minimal) to see what resonates with your audience.
+2. Hook Variations: Scroll-stopping text overlays and opening frames. We test 10+ hooks for every concept.
+3. Format Adaptation: Automatically resized and reformatted for Stories, Reels, Feeds, and Landscape placements.
+
+## AUDIENCE FIT (WHO THIS IS FOR)
+Headline: Who This Is For
+Subtext: We work best with ambitious brands ready to scale.
+
+Ideally You Are...
+- Spending $5k+ / month on ads
+- Found Product-Market Fit
+- Need volume to test new angles
+- Tired of managing reliable freelancers
+- Ready to scale aggressively
+
+This is NOT for...
+- Just starting out (Pre-revenue)
+- Looking for full marketing strategy
+- Micromanagers who need 10 revisions
+- Dropshippers with short term products
+- Brands with no existing assets
+
+## PROCESS SECTION
+Label: Zero Confusion
+Headline: Our Creative Process
+Subtext: No complex dashboards. No media buying jargon. Just pure, high-quality content delivered on time.
+
+Step 01: The Download (Action: Briefing)
+Description: We ingest your brand assets, visual identity, and previous winners. We analyze what's working to build your unique creative profile.
+
+Step 02: The Engine (Action: Production)
+Description: Our production team generates high-converting scripts and visuals in 24 hours. You get studio-quality assets ready to launch.
+
+Step 03: The Scale (Action: Refresh)
+Description: We don't stop. We continuously refresh your creative library with new angles and formats to fight ad fatigue and keep you trending.
+
+## OFFER (PRICING) SECTION
+Label: Simple Pricing
+Headline: One Plan. Unlimited Growth.
+Subtext: No hidden fees. Pause or cancel anytime.
+
+Plan: Creative Velocity
+Pricing: $550/mo (was $1,800)
+Status: Beta Pricing - Jan Only
+Urgency: Only 2 spots left (Onboarding 5 total)
+CTA: Subscribe Now
+Note: Async onboarding. Cancel anytime.
+
+What's Included:
+- Unlimited Ad Requests
+- 48-72h Turnaround Time
+- Hooks, Body & CTAs Variations
+- Static Images & Motion Graphics
+- UGC Styling & Editing
+- Dedicated Project Manager
+- Slack Communication
+- Native Source Files
+
+## FAQ SECTION
+Label: Trust Builder
+Headline: Objection Killer
+Subtext: Everything you need to know before we scale together. No hidden fees, no surprises.
+
+1. Is this real UGC or AI UGC?
+   Answer: We specialize in AI UGC. This means we use AI avatars and synthesized voices to create 'user-generated' style content without the hassle of shipping products or managing creators. It's faster, cheaper, and perfectly consistent.
+
+2. What formats do you deliver?
+   Answer: We deliver AI Static Ads and AI Video Ads. Whether you need scroll-stopping image variations or high-retention video hooks, our AI engine generates platform-native assets for Meta, TikTok, and YouTube.
+
+3. Do I need to send you the product?
+   Answer: No. Since we create AI-generated visuals and avatars, we don't need physical product samples. We use your existing high-res images and brand assets to train our models and generate the ads.
+
+4. What if I don't like the videos?
+   Answer: We offer unlimited revisions. If an AI avatar's delivery feels off or a hook doesn't land, we regenerate it instantly. Our goal is 100% satisfaction before you launch.
+
+5. Is there a long-term contract?
+   Answer: Never. We operate on a month-to-month flat rate. You can pause or cancel anytime if your creative needs change. We earn your business every single month.
+
+## CTA SECTION
+Status: Accepting 3 New Brands for Oct
+Headline: Your Ad Account Is Begging For Better Creative.
+Subtext: Don't let bad content be the bottleneck. Let us fill your feed with high-performing video assets.
+CTA: Get Started ($550/mo)
+Footer Note: Join the top 1% of D2C brands.
+
+## FOOTER SECTION
+Brand: Media House
+Copyright: © [Year] Media House Agency. All rights reserved.
+
+---
+
+## MANIFESTO PAGE
+Headline: The Creative Manifesto.
+Text:
+We believe the old way of advertising is dead. The era of spending weeks on a single "hero video" and praying it works is over.
+
+Today, volume is the new variable for success.
+
+But volume without quality is just noise. That's why we built Media House. To bridge the gap between high-frequency content and brand-safe quality.
+
+Our Core Beliefs:
+1. Speed is a feature. If it takes 2 weeks to ship an ad, the trend is already gone. We ship in 24 hours.
+2. Data over opinions. We don't care what we "like". We care what the algorithm rewards.
+3. Fatigue is the enemy. The only way to win is to out-produce the decay of your winning ads.
+
+Ready to join the new era?
+CTA: Book Creative Call

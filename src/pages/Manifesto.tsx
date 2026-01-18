@@ -28,7 +28,7 @@ const Manifesto = () => {
                             Today, <strong>volume is the new variable for success.</strong>
                         </p>
                         <p>
-                            But volume without quality is just noise. That's why we built Media House. To bridge the gap between high-frequency content and brand-safe quality.
+                            But volume without quality is just noise. That's why we built <strong>Thesis.</strong> To bridge the gap between high-frequency content and brand-safe quality.
                         </p>
 
                         <hr className="border-white/10 my-12" />

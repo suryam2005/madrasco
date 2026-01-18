@@ -4,20 +4,20 @@ import { useState } from 'react';
 
 const faqs = [
     {
+        question: "Why no meetings?",
+        answer: "Meetings kill momentum. By working asynchronously, we deliver in 48 hours what takes traditional agencies 2 weeks."
+    },
+    {
+        question: "How do I give feedback?",
+        answer: "Everything happens in your dashboard. Leave a comment, and we’ll have the revision back to you within 24 hours."
+    },
+    {
         question: "Is this real UGC or AI UGC?",
         answer: "We specialize in AI UGC. This means we use AI avatars and synthesized voices to create 'user-generated' style content without the hassle of shipping products or managing creators. It's faster, cheaper, and perfectly consistent."
     },
     {
         question: "What formats do you deliver?",
         answer: "We deliver AI Static Ads and AI Video Ads. Whether you need scroll-stopping image variations or high-retention video hooks, our AI engine generates platform-native assets for Meta, TikTok, and YouTube."
-    },
-    {
-        question: "Do I need to send you the product?",
-        answer: "No. Since we create AI-generated visuals and avatars, we don't need physical product samples. We use your existing high-res images and brand assets to train our models and generate the ads."
-    },
-    {
-        question: "What if I don't like the videos?",
-        answer: "We offer unlimited revisions. If an AI avatar's delivery feels off or a hook doesn't land, we regenerate it instantly. Our goal is 100% satisfaction before you launch."
     },
     {
         question: "Is there a long-term contract?",

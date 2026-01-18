@@ -32,16 +32,18 @@ const Offer = () => {
 
                             <div className="flex flex-col gap-2 mb-8">
                                 <div className="inline-flex w-fit items-center gap-2 px-2 py-1 rounded bg-yellow-500/10 text-yellow-500 text-[10px] font-bold uppercase tracking-wider">
-                                    Beta Pricing - Jan Only
+                                    Beta Access: Join our Performance Council for $550 (Limited to 5 Founder-Led Brands)
                                 </div>
-                                <div className="flex items-baseline gap-3">
-                                    <span className="text-2xl text-gray-500 line-through decoration-red-500/50">$1,800</span>
-                                    <span className="text-5xl font-bold text-white">$550</span>
-                                    <span className="text-gray-500">/mo</span>
+                                <div className="flex flex-col gap-1">
+                                    <div className="flex items-baseline gap-3">
+                                        <span className="text-5xl font-bold text-white">$550</span>
+                                        <span className="text-gray-500">first month</span>
+                                    </div>
+                                    <p className="text-sm text-gray-400">then $1,800/mo standard rate</p>
                                 </div>
-                                <div className="flex items-center gap-2 text-xs text-red-400 font-medium">
+                                <div className="flex items-center gap-2 text-xs text-red-400 font-medium mt-2">
                                     <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                                    Only 2 spots left (Onboarding 5 total)
+                                    Includes: Unlimited Requests, 48h Turnaround, Unlimited Revisions
                                 </div>
                             </div>
 

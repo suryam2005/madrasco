@@ -8,8 +8,8 @@ const Footer = () => {
 
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
                 <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center font-bold text-white">M</div>
-                    <span className="text-xl font-bold tracking-tight text-white">Media House</span>
+                    <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center font-bold text-white">T</div>
+                    <span className="text-xl font-bold tracking-tight text-white">Thesis Creative</span>
                 </div>
 
                 <div className="flex items-center gap-8">
@@ -25,7 +25,7 @@ const Footer = () => {
                 </div>
 
                 <div className="text-gray-500 text-sm">
-                    © {new Date().getFullYear()} Media House Agency. All rights reserved.
+                    © {new Date().getFullYear()} Thesis Creative. All rights reserved.
                 </div>
             </div>
         </footer>

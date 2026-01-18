@@ -15,17 +15,7 @@ const CTA = () => {
                     <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:30px_30px] opacity-50" />
 
                     <div className="relative z-10 px-6 py-16 md:py-24 flex flex-col items-center text-center">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
-                        >
-                            <span className="flex h-2 w-2 relative">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                            </span>
-                            <span className="text-sm font-medium text-gray-200">Accepting 3 New Brands for Oct</span>
-                        </motion.div>
+
 
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}

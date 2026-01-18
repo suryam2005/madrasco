@@ -41,9 +41,9 @@ const AdLibrary = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.1, ease: "easeInOut" }}
-                        className="text-5xl md:text-6xl font-bold mb-6 tracking-tight"
+                        className="text-4xl md:text-6xl font-bold mb-6 tracking-tight"
                     >
-                        Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500">Work</span>
+                        Selected Case Studies & <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500">High-Spend Renders</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -51,7 +51,7 @@ const AdLibrary = () => {
                         transition={{ duration: 0.6, delay: 0.2, ease: "easeInOut" }}
                         className="text-gray-400 text-xl max-w-2xl mx-auto"
                     >
-                        Filter through our high-converting top performers across every major industry.
+                        We specialize in high-fidelity assets that outperform traditional photography for $10M+ brands.
                     </motion.p>
                 </div>
 

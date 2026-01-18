@@ -17,7 +17,7 @@ const Navbar = () => {
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                         <img src="/logo.png" alt="MediaHouse" className="w-8 h-8 rounded-lg" />
-                        <Link to="/" className="text-xl font-bold tracking-tight">MEDIAHOUSE</Link>
+                        <Link to="/" className="text-xl font-bold tracking-tight">THESIS</Link>
                     </div>
 
                     {/* Desktop Menu */}

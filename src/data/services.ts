@@ -2,18 +2,17 @@ import { Brain, Zap, Shield, Globe, Rocket, Cpu } from 'lucide-react';
 
 export const servicesData = [
     {
-        id: "ai-avatar-ugc",
-        title: "AI Avatar UGC",
+        id: "zero-ship-workflow",
+        title: "Zero-Ship Workflow",
         subtitle: "No Shipping Needed",
-        description: "We use hyper-realistic AI avatars to create UGC-style testimonials and hooks without shipping product.",
+        description: "We use high-fidelity AI to render your products into any scene. No need to ship physical samples. Just upload your high-res photos and we handle the rest.",
         fullDescription: `
-            Stop waiting weeks for creators to film. Our AI Avatar technology generates studio-quality UGC in minutes.
+            Stop waiting weeks for creators to film. Our high-fidelity AI renders your product into any lifestyle scene or UGC video instantly.
             
             **Why it wins:**
-            - **Speed:** 24h turnaround vs 2-3 weeks with creators.
-            - **Consistency:** Perfect lighting, audio, and delivery every time.
-            - **Scale:** Create 100 variations of scripts instantly.
-            - **No Product Shipping:** We generate the 'talking head' and overlay your product footage.
+            - **Speed:** Instant generation vs 2-3 weeks shipping & filming.
+            - **Cost:** Save thousands on shipping and lost inventory.
+            - **Variety:** Place your product in a kitchen, a beach, or a futuristic lab in one click.
         `,
         icon: Brain,
         image: "/mediahouse_ad.jpg"

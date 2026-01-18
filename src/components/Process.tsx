@@ -46,7 +46,7 @@ const Process = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-bold mb-6"
                     >
-                        Our Creative Process
+                        The 48-Hour Deployment Protocol
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ const Process = () => {
                         transition={{ delay: 0.2 }}
                         className="text-gray-400 max-w-xl mx-auto"
                     >
-                        No complex dashboards. No media buying jargon. Just pure, high-quality content delivered on time.
+                        How we outpace legacy agencies without a single Zoom call. We’ve managed to ship studio-grade assets with a velocity that legacy agencies simply cannot match.
                     </motion.p>
                 </div>
 

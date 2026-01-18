@@ -66,7 +66,7 @@ const BeforeAfter = () => {
                                     <Check size={20} />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-white">Media House Creative</h3>
+                                    <h3 className="text-lg font-bold text-white">Thesis Creative</h3>
                                     <p className="text-xs text-gray-400">High CTR, Vibrant, Brand-Aligned</p>
                                 </div>
                             </div>
