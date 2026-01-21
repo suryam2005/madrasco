@@ -1,7 +1,58 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Zap } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 const Offer = () => {
+    useEffect(() => {
+        // Ensure PayPal script is loaded
+        const containerId = '#paypal-button-container-P-92A18540G9148843ENFYKYMA';
+
+        const renderPayPalButton = () => {
+            if ((window as any).paypal) {
+                const container = document.querySelector(containerId);
+                if (container) {
+                    container.innerHTML = ""; // Clear existing buttons to prevent duplicates
+
+                    try {
+                        (window as any).paypal.Buttons({
+                            style: {
+                                shape: 'pill',
+                                color: 'gold',
+                                layout: 'vertical',
+                                label: 'subscribe'
+                            },
+                            createSubscription: function (data: any, actions: any) {
+                                return actions.subscription.create({
+                                    plan_id: 'P-92A18540G9148843ENFYKYMA'
+                                });
+                            },
+                            onApprove: function (data: any, actions: any) {
+                                alert("Subscription successful! ID: " + data.subscriptionID);
+                            }
+                        }).render(containerId);
+                    } catch (err) {
+                        console.error("PayPal render error:", err);
+                    }
+                }
+            }
+        };
+
+        // If script is already loaded
+        if ((window as any).paypal) {
+            renderPayPalButton();
+        } else {
+            // Poll for it briefly if not yet ready (though it's in head)
+            const interval = setInterval(() => {
+                if ((window as any).paypal) {
+                    clearInterval(interval);
+                    renderPayPalButton();
+                }
+            }, 500);
+            return () => clearInterval(interval);
+        }
+
+    }, []);
+
     return (
         <section id="offer" className="py-24 px-6 md:px-12 bg-black relative">
             <div className="absolute inset-0 bg-gradient-to-b from-purple-900/10 to-transparent pointer-events-none" />
@@ -32,14 +83,14 @@ const Offer = () => {
 
                             <div className="flex flex-col gap-2 mb-8">
                                 <div className="inline-flex w-fit items-center gap-2 px-2 py-1 rounded bg-yellow-500/10 text-yellow-500 text-[10px] font-bold uppercase tracking-wider">
-                                    Beta Access: Join our Performance Council for $550 (Limited to 5 Founder-Led Brands)
+                                    Beta Access: Join our Performance Council (Limited to 5 Founder-Led Brands)
                                 </div>
                                 <div className="flex flex-col gap-1">
                                     <div className="flex items-baseline gap-3">
                                         <span className="text-5xl font-bold text-white">$550</span>
-                                        <span className="text-gray-500">first month</span>
+                                        <span className="text-gray-500">/month</span>
                                     </div>
-                                    <p className="text-sm text-gray-400">then $1,800/mo standard rate</p>
+                                    <p className="text-sm text-gray-400">Flat rate. Pause or cancel anytime.</p>
                                 </div>
                                 <div className="flex items-center gap-2 text-xs text-red-400 font-medium mt-2">
                                     <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
@@ -47,10 +98,8 @@ const Offer = () => {
                                 </div>
                             </div>
 
-                            <a href="#" className="w-full flex items-center justify-center gap-2 bg-white text-black font-bold py-4 rounded-full hover:bg-gray-100 transition-colors mb-6">
-                                <Zap size={20} className="fill-black" />
-                                Subscribe Now
-                            </a>
+                            <div id="paypal-button-container-P-92A18540G9148843ENFYKYMA" className="mb-6 z-0 relative"></div>
+
                             <p className="text-center text-xs text-gray-500">Async onboarding. Cancel anytime.</p>
                         </div>
 
