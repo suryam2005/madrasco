@@ -106,14 +106,13 @@ const Offer = () => {
                         <div className="space-y-4">
                             <p className="font-semibold text-white mb-4">What's Included:</p>
                             {[
-                                "Unlimited Ad Requests",
-                                "48-72h Turnaround Time",
-                                "Hooks, Body & CTAs Variations",
-                                "Static Images & Motion Graphics",
-                                "UGC Styling & Editing",
-                                "Dedicated Project Manager",
-                                "Slack Communication",
-                                "Native Source Files"
+                                "Unlimited Performance Requests (Active one at a time)",
+                                "48-Hour Rapid Deployment (Average turnaround)",
+                                "High-Fidelity AI Renders (Nano-Native quality)",
+                                "Strategic Hook & Headline Variations",
+                                "Static, Motion & UGC Post-Production",
+                                "Direct Async Communication (No meetings, just execution)",
+                                "Full Ownership & Native Source Files"
                             ].map((feature, i) => (
                                 <div key={i} className="flex items-center gap-3">
                                     <div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0">
