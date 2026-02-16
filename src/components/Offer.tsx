@@ -21,12 +21,12 @@ const Offer = () => {
                                 layout: 'vertical',
                                 label: 'subscribe'
                             },
-                            createSubscription: function (data: any, actions: any) {
+                            createSubscription: function (_data: any, actions: any) {
                                 return actions.subscription.create({
                                     plan_id: 'P-92A18540G9148843ENFYKYMA'
                                 });
                             },
-                            onApprove: function (data: any, actions: any) {
+                            onApprove: function (data: any, _actions: any) {
                                 alert("Subscription successful! ID: " + data.subscriptionID);
                             }
                         }).render(containerId);
